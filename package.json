@@ -11,9 +11,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open",
-    "start": "webpack",
-    "fireTheProd": "webpack && node dist/server.js"
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack --config webpack.prod.js",
+    "fireTheProd": "webpack --config webpack.prod.js && node dist/server.js"
   },
   "keywords": [],
   "author": "",

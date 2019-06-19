@@ -8,6 +8,7 @@ class MyComponent extends Component {
     <div>
       <div className={"intro"}>Hello World</div>
       <img src={logo} alt="Logo" />
+      <div>Awesome!!!</div>
     </div>
     );
   }

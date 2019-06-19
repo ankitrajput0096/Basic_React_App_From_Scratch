@@ -1,5 +1,3 @@
-
-//NOT USING THIS ANYMORE
 const path = require("path");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
