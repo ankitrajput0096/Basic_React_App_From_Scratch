@@ -8,7 +8,7 @@
     "start": "webpack serve --mode development --open",
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "prodBundle": "webpack --config webpack.prod.js",
-    "fireTheProd": "webpack --config webpack.prod.js && node public/server.js"
+    "fireTheProd": "webpack --config webpack.prod.js && node src/prodexpressconfig/server.js"
   },
 
   "keywords": [],
@@ -27,7 +27,6 @@
     "css-loader": "^6.11.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
-    "mini-css-extract-plugin": "^2.9.1",
     "style-loader": "^3.3.4",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",
