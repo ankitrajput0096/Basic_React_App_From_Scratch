@@ -1,53 +1,42 @@
-
-//NOT USING THIS ANYMORE
-const path = require("path");
-
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require('webpack');
-
+// webpack.config.js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
-  output: {
-    filename: "./main.js"
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 9000,
-    watchContentBase: true,
-    progress: true,
-    hot: true
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader"
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          MiniCssExtractPlugin.loader,
-          'css-loader'
+    entry: path.join(__dirname, "src", "index.js"),
+    output: {
+      path:path.resolve(__dirname, "bundle"),
+    },
+    module: {
+        rules: [
+          {
+            test: /\.?js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react']
+              }
+            }
+          },
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader'],
+          },
+          {
+            test: /\.(gif|svg|jpg|png)$/,
+            use: ["file-loader"]
+          }
         ]
       },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
-      }
-    ]
+  devServer: {
+    compress: true,
+    port: 9000,
+    hot: true
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'style.css',
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "public", "index.html"),
     }),
-    new webpack.HotModuleReplacementPlugin()
   ]
 };

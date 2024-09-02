@@ -1,51 +1,43 @@
 const path = require("path");
-
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require('webpack');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: path.join(__dirname, "src", "index.js"),
   mode: "development",
   output: {
     filename: "./main.js"
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000,
-    watchContentBase: true,
-    progress: true,
     hot: true
   },
 
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.?js$/,
+        exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
         }
       },
       {
         test: /\.css$/,
-        use: [
-          "style-loader",
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(gif|svg|jpg|png)$/,
         use: ["file-loader"]
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'style.css',
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "public", "index.html"),
+    })
   ]
 };
