@@ -28,6 +28,23 @@ Installing dependencies:
 npm install
 ```
 
+Or 
+
+Install dependencies individually as follows:
+
+```
+npm install react react-dom
+npm install express
+npm install webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin --save-dev
+npm install style-loader css-loader file-loader --save-dev
+```
+
+Start App :
+
+```
+npm start
+```
+
 Start App in Dev Environment:
 
 ```
@@ -37,7 +54,7 @@ npm run dev
 To Bundle App for Prod Environment:
 
 ```
-npm run start
+npm run prodBundle
 ```
 
 ## Running
@@ -57,8 +74,10 @@ Start App in Prod Environment:
 npm run fireTheProd
 ```
 
-Your application should be now running on http://localhost:8080
+Your application should be now running on http://localhost:9090
 
+## Screenshots of Simple React App
+![Screenshot 1](appscreenshots/Screenshot_1.png)
 
 ## Built With
 

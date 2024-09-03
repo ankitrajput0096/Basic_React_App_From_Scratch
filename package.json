@@ -10,7 +10,6 @@
     "prodBundle": "webpack --config webpack.prod.js",
     "fireTheProd": "webpack --config webpack.prod.js && node src/prodexpressconfig/server.js"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
